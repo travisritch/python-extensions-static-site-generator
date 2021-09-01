@@ -7,7 +7,7 @@ total_written = 0
 @hooks.register("start_build")
 def start_build():
     global start_time
-    start_time = time.localtime()
+    start_time = time.time()
 
 @hooks.register("written")
 def written():
@@ -16,5 +16,5 @@ def written():
 
 @hooks.register("stats")
 def stats():
-    final_time = time.localtime() - start_time
+    final_time = time.time() - start_time
     average = final_time / total_written if total_written != 0 else 0
